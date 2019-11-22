@@ -1,5 +1,11 @@
 package com.exercises.martianrobots.constants
 
-enum class Instruction {
-    LEFT, RIGHT, FORWARD
+interface Instruction
+
+enum class DirectionalInstruction : Instruction {
+    LEFT, RIGHT
+}
+
+enum class MovementInstruction : Instruction {
+    FORWARD
 }
