@@ -1,6 +1,5 @@
 package com.exercises.martianrobots
 
-import MartianRobotsCommandsVisitor
 import MartianRobotsGrammarLexer
 import MartianRobotsGrammarParser
 import org.antlr.v4.runtime.CharStreams

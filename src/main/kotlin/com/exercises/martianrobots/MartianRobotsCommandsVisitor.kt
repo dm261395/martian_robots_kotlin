@@ -1,3 +1,7 @@
+package com.exercises.martianrobots
+
+import MartianRobotsGrammarBaseVisitor
+import MartianRobotsGrammarParser
 import com.exercises.martianrobots.constants.Instruction
 import com.exercises.martianrobots.constants.Orientation
 import com.exercises.martianrobots.coordinate.Coordinate
