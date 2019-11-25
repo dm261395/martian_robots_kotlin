@@ -1,42 +1,46 @@
 package com.exercises.martianrobots.constants
 
-enum class Orientation {
-    NORTH {
+enum class Orientation(val value: String) {
+    NORTH("N") {
         override fun getNewOrientation(instruction: Instruction): Orientation {
             return when (instruction) {
-                DirectionalInstruction.LEFT -> WEST
-                DirectionalInstruction.RIGHT -> EAST
+                Instruction.LEFT -> WEST
+                Instruction.RIGHT -> EAST
                 else -> this
             }
         }
     },
-    EAST {
+    EAST("E") {
         override fun getNewOrientation(instruction: Instruction): Orientation {
             return when (instruction) {
-                DirectionalInstruction.LEFT -> NORTH
-                DirectionalInstruction.RIGHT -> SOUTH
+                Instruction.LEFT -> NORTH
+                Instruction.RIGHT -> SOUTH
                 else -> this
             }
         }
     },
-    SOUTH {
+    SOUTH("S") {
         override fun getNewOrientation(instruction: Instruction): Orientation {
             return when (instruction) {
-                DirectionalInstruction.LEFT -> EAST
-                DirectionalInstruction.RIGHT -> WEST
+                Instruction.LEFT -> EAST
+                Instruction.RIGHT -> WEST
                 else -> this
             }
         }
     },
-    WEST {
+    WEST("W") {
         override fun getNewOrientation(instruction: Instruction): Orientation {
             return when (instruction) {
-                DirectionalInstruction.LEFT -> SOUTH
-                DirectionalInstruction.RIGHT -> NORTH
+                Instruction.LEFT -> SOUTH
+                Instruction.RIGHT -> NORTH
                 else -> this
             }
         }
     };
+
+    companion object {
+        fun from(orientationStr: String): Orientation = values().first { it.value == orientationStr }
+    }
 
     abstract fun getNewOrientation(instruction: Instruction): Orientation
 }

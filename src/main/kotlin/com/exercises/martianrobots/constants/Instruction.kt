@@ -1,11 +1,9 @@
 package com.exercises.martianrobots.constants
 
-interface Instruction
+enum class Instruction(val value: String) {
+    LEFT("L"), RIGHT("R"), FORWARD("F");
 
-enum class DirectionalInstruction : Instruction {
-    LEFT, RIGHT
-}
-
-enum class MovementInstruction : Instruction {
-    FORWARD
+    companion object {
+        fun from(instructionStr: String): Instruction = values().first() { it.value == instructionStr }
+    }
 }
