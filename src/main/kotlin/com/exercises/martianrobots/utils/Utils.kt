@@ -12,7 +12,7 @@ class Utils {
             instruction: Instruction
         ): Coordinate {
             if (instruction == Instruction.FORWARD) {
-                when (orientation) {
+                return when (orientation) {
                     Orientation.NORTH -> Coordinate(coords.x, coords.y + 1)
                     Orientation.EAST -> Coordinate(coords.x + 1, coords.y)
                     Orientation.SOUTH -> Coordinate(coords.x, coords.y - 1)
