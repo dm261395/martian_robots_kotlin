@@ -11,6 +11,16 @@ fun main(args: Array<String>) {
     val tokens = CommonTokenStream(lexer)
     val parser = MartianRobotsGrammarParser(tokens)
     val tree = parser.input()
-    MartianRobotsCommandsVisitor().visit(tree)
+
+    val visitor = MartianRobotsCommandsVisitor()
+    visitor.visit(tree)
+
+    for (robot in visitor.robots) {
+        robot.applyInstructions()
+    }
+
+    for (robot in visitor.robots) {
+        println(robot.getRobotMessage())
+    }
 }
 
