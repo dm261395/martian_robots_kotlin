@@ -14,6 +14,7 @@ class MartianRobotsCommandsVisitor : MartianRobotsGrammarBaseVisitor<Unit>() {
 
     override fun visitInput(ctx: MartianRobotsGrammarParser.InputContext?) {
         val coordinatesCtx = ctx?.gridCoords()?.coordinates()
+        
         if (coordinatesCtx != null) {
             val x = coordinatesCtx.xCoord().text.toInt()
             val y = coordinatesCtx.yCoord().text.toInt()
