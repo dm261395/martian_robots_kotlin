@@ -1,9 +1,13 @@
 grammar MartianRobotsGrammar;
 
 // Parser
-input : gridCoords ;
+input : gridCoords robotConstructor+ ;
 
 gridCoords : coordinates NEWLINE ;
+
+robotConstructor : coordinates WHITESPACE orientation NEWLINE INSTRUCTIONS NEWLINE;
+
+orientation : ORIENTATION ;
 
 coordinates : xCoord WHITESPACE yCoord ;
 
