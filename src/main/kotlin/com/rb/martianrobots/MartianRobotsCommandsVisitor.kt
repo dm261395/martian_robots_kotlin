@@ -18,12 +18,7 @@ class MartianRobotsCommandsVisitor : MartianRobotsCommandsBaseVisitor<Unit>() {
         if (coordinatesCtx != null) {
             val x = coordinatesCtx.xCoord().text.toInt()
             val y = coordinatesCtx.yCoord().text.toInt()
-            grid = Grid(
-                Coordinate(
-                    x,
-                    y
-                )
-            )
+            grid = Grid(Coordinate(x, y))
         }
         visitChildren(ctx)
     }
@@ -36,14 +31,9 @@ class MartianRobotsCommandsVisitor : MartianRobotsCommandsBaseVisitor<Unit>() {
             val y = coordinatesCtx.yCoord().text.toInt()
             val orientation = Orientation.from(ctx.orientation().text)
             val instructions = ctx.INSTRUCTIONS().text.map { Instruction.from(it.toString()) }
-            robots.add(
-                Robot(
-                    Coordinate(
-                        x,
-                        y
-                    ), orientation, instructions, grid!!
-                )
-            )
+            grid?.let {
+                robots.add(Robot(Coordinate(x, y), orientation, instructions, it))
+            }
         }
         visitChildren(ctx)
     }
