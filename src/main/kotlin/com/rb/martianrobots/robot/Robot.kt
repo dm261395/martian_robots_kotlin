@@ -4,7 +4,6 @@ import com.rb.martianrobots.constants.Instruction
 import com.rb.martianrobots.constants.Orientation
 import com.rb.martianrobots.coordinate.Coordinate
 import com.rb.martianrobots.grid.Grid
-import com.rb.martianrobots.utils.Utils
 
 class Robot(
     initialCoords: Coordinate,
@@ -21,7 +20,7 @@ class Robot(
     fun applyInstructions() {
         for (instruction in instructions) {
             orientation = orientation.getNewOrientation(instruction)
-            val newCoords = Utils.getNewCoordinates(coords, orientation, instruction)
+            val newCoords = coords.computeNewCoordinates(orientation, instruction)
 
             val newCoordsAreInBounds = grid.coordinatesAreInBounds(newCoords)
             val currentCoordsHaveScent = grid.hasScentAtCoordinates(coords)
