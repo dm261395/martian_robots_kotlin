@@ -6,6 +6,6 @@ enum class Instruction(val value: String) {
     override fun toString() = value
 
     companion object {
-        fun from(instructionStr: String): Instruction = values().first() { it.value == instructionStr }
+        fun from(instructionStr: String) = values().first { it.value == instructionStr }
     }
 }

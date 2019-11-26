@@ -41,7 +41,7 @@ enum class Orientation(val value: String) {
     override fun toString() = value
 
     companion object {
-        fun from(orientationStr: String): Orientation = values().first { it.value == orientationStr }
+        fun from(orientationStr: String) = values().first { it.value == orientationStr }
     }
 
     abstract fun getNewOrientation(instruction: Instruction): Orientation
