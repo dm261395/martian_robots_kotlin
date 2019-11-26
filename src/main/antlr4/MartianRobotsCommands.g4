@@ -5,7 +5,7 @@ input : gridCoords robotConstructor+ ;
 
 gridCoords : coordinates NEWLINE ;
 
-robotConstructor : coordinates WHITESPACE ORIENTATION NEWLINE INSTRUCTIONS NEWLINE;
+robotConstructor : coordinates WHITESPACE ORIENTATION NEWLINE INSTRUCTIONS (NEWLINE | EOF);
 
 coordinates : xCoord WHITESPACE yCoord ;
 
