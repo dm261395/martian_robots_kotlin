@@ -1,12 +1,12 @@
-package com.exercises.martianrobots
+package com.rb.martianrobots
 
 import MartianRobotsGrammarBaseVisitor
 import MartianRobotsGrammarParser
-import com.exercises.martianrobots.constants.Instruction
-import com.exercises.martianrobots.constants.Orientation
-import com.exercises.martianrobots.coordinate.Coordinate
-import com.exercises.martianrobots.grid.Grid
-import com.exercises.martianrobots.robot.Robot
+import com.rb.martianrobots.constants.Instruction
+import com.rb.martianrobots.constants.Orientation
+import com.rb.martianrobots.coordinate.Coordinate
+import com.rb.martianrobots.grid.Grid
+import com.rb.martianrobots.robot.Robot
 
 class MartianRobotsCommandsVisitor : MartianRobotsGrammarBaseVisitor<Unit>() {
     var grid: Grid? = null
@@ -14,11 +14,16 @@ class MartianRobotsCommandsVisitor : MartianRobotsGrammarBaseVisitor<Unit>() {
 
     override fun visitInput(ctx: MartianRobotsGrammarParser.InputContext?) {
         val coordinatesCtx = ctx?.gridCoords()?.coordinates()
-        
+
         if (coordinatesCtx != null) {
             val x = coordinatesCtx.xCoord().text.toInt()
             val y = coordinatesCtx.yCoord().text.toInt()
-            grid = Grid(Coordinate(x, y))
+            grid = Grid(
+                Coordinate(
+                    x,
+                    y
+                )
+            )
         }
         visitChildren(ctx)
     }
@@ -31,7 +36,14 @@ class MartianRobotsCommandsVisitor : MartianRobotsGrammarBaseVisitor<Unit>() {
             val y = coordinatesCtx.yCoord().text.toInt()
             val orientation = Orientation.from(ctx.orientation().text)
             val instructions = ctx.INSTRUCTIONS().text.map { Instruction.from(it.toString()) }
-            robots.add(Robot(Coordinate(x, y), orientation, instructions, grid!!))
+            robots.add(
+                Robot(
+                    Coordinate(
+                        x,
+                        y
+                    ), orientation, instructions, grid!!
+                )
+            )
         }
         visitChildren(ctx)
     }

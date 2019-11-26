@@ -1,10 +1,11 @@
-package com.exercises.martianrobots.grid
+package com.rb.martianrobots.grid
 
-import com.exercises.martianrobots.coordinate.Coordinate
+import com.rb.martianrobots.coordinate.Coordinate
 
 class Grid(private val topRightCoords: Coordinate) {
     private var scentsCoords: MutableList<Coordinate> = mutableListOf()
-    private val bottomLeftCoords: Coordinate = Coordinate(0, 0)
+    private val bottomLeftCoords: Coordinate =
+        Coordinate(0, 0)
 
     fun hasScentAtCoordinates(coords: Coordinate): Boolean = scentsCoords.find { it == coords } != null
 

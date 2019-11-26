@@ -1,4 +1,4 @@
-package com.exercises.martianrobots.constants
+package com.rb.martianrobots.constants
 
 enum class Instruction(val value: String) {
     LEFT("L"), RIGHT("R"), FORWARD("F");

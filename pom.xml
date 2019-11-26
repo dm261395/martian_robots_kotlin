@@ -4,19 +4,19 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.exercises.martianrobots</groupId>
+    <groupId>com.rb.martianrobots</groupId>
     <artifactId>martian-robots</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>com.exercises.martianrobots martian-robots</name>
+    <name>com.rb.martianrobots martian-robots</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.version>1.3.60</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
         <junit.version>4.12</junit.version>
-        <main.class>com.exercises.martianrobots.MainKt</main.class>
+        <main.class>com.rb.martianrobots.MainKt</main.class>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>

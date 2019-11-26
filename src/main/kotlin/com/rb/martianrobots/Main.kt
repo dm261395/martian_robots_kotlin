@@ -1,4 +1,4 @@
-package com.exercises.martianrobots
+package com.rb.martianrobots
 
 import MartianRobotsGrammarLexer
 import MartianRobotsGrammarParser

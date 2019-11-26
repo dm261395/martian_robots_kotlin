@@ -1,10 +1,10 @@
-package com.exercises.martianrobots.robot
+package com.rb.martianrobots.robot
 
-import com.exercises.martianrobots.constants.Instruction
-import com.exercises.martianrobots.constants.Orientation
-import com.exercises.martianrobots.coordinate.Coordinate
-import com.exercises.martianrobots.grid.Grid
-import com.exercises.martianrobots.utils.Utils
+import com.rb.martianrobots.constants.Instruction
+import com.rb.martianrobots.constants.Orientation
+import com.rb.martianrobots.coordinate.Coordinate
+import com.rb.martianrobots.grid.Grid
+import com.rb.martianrobots.utils.Utils
 
 class Robot(
     initialCoords: Coordinate,

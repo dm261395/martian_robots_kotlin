@@ -1,9 +1,9 @@
-package com.exercises.martianrobots.robot
+package com.rb.martianrobots.robot
 
-import com.exercises.martianrobots.constants.Instruction
-import com.exercises.martianrobots.constants.Orientation
-import com.exercises.martianrobots.coordinate.Coordinate
-import com.exercises.martianrobots.grid.Grid
+import com.rb.martianrobots.constants.Instruction
+import com.rb.martianrobots.constants.Orientation
+import com.rb.martianrobots.coordinate.Coordinate
+import com.rb.martianrobots.grid.Grid
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -12,7 +12,12 @@ import kotlin.test.assertTrue
 class RobotTest {
     @Test
     fun robot_NavigatesGridCorrectly_ForOneRobot() {
-        val grid = Grid(Coordinate(5, 3))
+        val grid = Grid(
+            Coordinate(
+                5,
+                3
+            )
+        )
         val instructions = listOf<Instruction>(
             Instruction.RIGHT,
             Instruction.FORWARD,
@@ -23,7 +28,12 @@ class RobotTest {
             Instruction.RIGHT,
             Instruction.FORWARD
         )
-        val robot = Robot(Coordinate(1, 1), Orientation.EAST, instructions, grid)
+        val robot = Robot(
+            Coordinate(
+                1,
+                1
+            ), Orientation.EAST, instructions, grid
+        )
         robot.applyInstructions()
 
         assertEquals(Orientation.EAST, robot.orientation)
@@ -34,7 +44,12 @@ class RobotTest {
 
     @Test
     fun robot_NavigatesGridCorrectly_ForMultipleRobots() {
-        val grid = Grid(Coordinate(5, 3))
+        val grid = Grid(
+            Coordinate(
+                5,
+                3
+            )
+        )
 
         val instructions1 = listOf<Instruction>(
             Instruction.RIGHT,
@@ -47,7 +62,12 @@ class RobotTest {
             Instruction.FORWARD
         )
 
-        val robot1 = Robot(Coordinate(1, 1), Orientation.EAST, instructions1, grid)
+        val robot1 = Robot(
+            Coordinate(
+                1,
+                1
+            ), Orientation.EAST, instructions1, grid
+        )
 
         val instructions2 = listOf<Instruction>(
             Instruction.FORWARD,
@@ -65,7 +85,12 @@ class RobotTest {
             Instruction.LEFT
         )
 
-        val robot2 = Robot(Coordinate(3, 2), Orientation.NORTH, instructions2, grid)
+        val robot2 = Robot(
+            Coordinate(
+                3,
+                2
+            ), Orientation.NORTH, instructions2, grid
+        )
 
         val instructions3 = listOf<Instruction>(
             Instruction.LEFT,
@@ -80,7 +105,12 @@ class RobotTest {
             Instruction.LEFT
         )
 
-        val robot3 = Robot(Coordinate(0, 3), Orientation.WEST, instructions3, grid)
+        val robot3 = Robot(
+            Coordinate(
+                0,
+                3
+            ), Orientation.WEST, instructions3, grid
+        )
 
         robot1.applyInstructions()
         robot2.applyInstructions()
@@ -104,11 +134,21 @@ class RobotTest {
 
     @Test
     fun robot_MovesOffGridAndGetsLost() {
-        val grid = Grid(Coordinate(5, 3))
+        val grid = Grid(
+            Coordinate(
+                5,
+                3
+            )
+        )
         val instructions = listOf<Instruction>(
             Instruction.FORWARD
         )
-        val robot = Robot(Coordinate(5, 3), Orientation.NORTH, instructions, grid)
+        val robot = Robot(
+            Coordinate(
+                5,
+                3
+            ), Orientation.NORTH, instructions, grid
+        )
         robot.applyInstructions()
 
         assertEquals(5, robot.coords.x)

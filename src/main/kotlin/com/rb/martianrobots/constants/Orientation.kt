@@ -1,4 +1,4 @@
-package com.exercises.martianrobots.constants
+package com.rb.martianrobots.constants
 
 enum class Orientation(val value: String) {
     NORTH("N") {
