@@ -1,14 +1,14 @@
 package com.rb.martianrobots
 
-import MartianRobotsGrammarLexer
-import MartianRobotsGrammarParser
+import MartianRobotsCommandsLexer
+import MartianRobotsCommandsParser
 import org.antlr.v4.runtime.CharStreams
 import org.antlr.v4.runtime.CommonTokenStream
 
 fun main(args: Array<String>) {
-    val lexer = MartianRobotsGrammarLexer(CharStreams.fromFileName("input.txt"))
+    val lexer = MartianRobotsCommandsLexer(CharStreams.fromFileName("input.txt"))
     val tokens = CommonTokenStream(lexer)
-    val parser = MartianRobotsGrammarParser(tokens)
+    val parser = MartianRobotsCommandsParser(tokens)
     val tree = parser.input()
 
     val visitor = MartianRobotsCommandsVisitor()

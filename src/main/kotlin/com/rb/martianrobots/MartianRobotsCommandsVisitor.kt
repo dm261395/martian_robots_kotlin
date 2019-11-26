@@ -1,18 +1,18 @@
 package com.rb.martianrobots
 
-import MartianRobotsGrammarBaseVisitor
-import MartianRobotsGrammarParser
+import MartianRobotsCommandsBaseVisitor
+import MartianRobotsCommandsParser
 import com.rb.martianrobots.constants.Instruction
 import com.rb.martianrobots.constants.Orientation
 import com.rb.martianrobots.coordinate.Coordinate
 import com.rb.martianrobots.grid.Grid
 import com.rb.martianrobots.robot.Robot
 
-class MartianRobotsCommandsVisitor : MartianRobotsGrammarBaseVisitor<Unit>() {
+class MartianRobotsCommandsVisitor : MartianRobotsCommandsBaseVisitor<Unit>() {
     var grid: Grid? = null
     val robots: MutableList<Robot> = mutableListOf()
 
-    override fun visitInput(ctx: MartianRobotsGrammarParser.InputContext?) {
+    override fun visitInput(ctx: MartianRobotsCommandsParser.InputContext?) {
         val coordinatesCtx = ctx?.gridCoords()?.coordinates()
 
         if (coordinatesCtx != null) {
@@ -28,7 +28,7 @@ class MartianRobotsCommandsVisitor : MartianRobotsGrammarBaseVisitor<Unit>() {
         visitChildren(ctx)
     }
 
-    override fun visitRobotConstructor(ctx: MartianRobotsGrammarParser.RobotConstructorContext?) {
+    override fun visitRobotConstructor(ctx: MartianRobotsCommandsParser.RobotConstructorContext?) {
         val coordinatesCtx = ctx?.coordinates()
 
         if (grid != null && coordinatesCtx != null && ctx.orientation() != null) {

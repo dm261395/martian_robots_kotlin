@@ -1,4 +1,4 @@
-grammar MartianRobotsGrammar;
+grammar MartianRobotsCommands;
 
 // Parser
 input : gridCoords robotConstructor+ ;
