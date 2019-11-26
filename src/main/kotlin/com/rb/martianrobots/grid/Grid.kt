@@ -3,9 +3,8 @@ package com.rb.martianrobots.grid
 import com.rb.martianrobots.coordinate.Coordinate
 
 class Grid(private val topRightCoords: Coordinate) {
-    private var scentsCoords: MutableList<Coordinate> = mutableListOf()
-    private val bottomLeftCoords: Coordinate =
-        Coordinate(0, 0)
+    private var scentsCoords = mutableListOf<Coordinate>()
+    private val bottomLeftCoords = Coordinate(0, 0)
 
     fun hasScentAtCoordinates(coords: Coordinate) = scentsCoords.any { it == coords }
 
