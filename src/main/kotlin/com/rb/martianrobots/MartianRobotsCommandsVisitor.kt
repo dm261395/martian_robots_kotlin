@@ -31,7 +31,7 @@ class MartianRobotsCommandsVisitor : MartianRobotsCommandsBaseVisitor<Unit>() {
             val x = coordinatesContext.xCoord()?.text?.toInt()
             val y = coordinatesContext.yCoord()?.text?.toInt()
 
-            val orientationStr = ctx.orientation()?.text
+            val orientationStr = ctx.ORIENTATION()?.text
             val orientation = if (orientationStr != null) Orientation.from(orientationStr) else null
 
             val instructions = ctx.INSTRUCTIONS()?.text?.map { Instruction.from(it.toString()) }
