@@ -3,7 +3,7 @@ package com.rb.martianrobots.coordinate
 import com.rb.martianrobots.constants.Instruction
 import com.rb.martianrobots.constants.Orientation
 
-class Coordinate(val x: Int, val y: Int) {
+data class Coordinate(val x: Int, val y: Int) {
     fun computeNewCoordinates(
         orientation: Orientation,
         instruction: Instruction
