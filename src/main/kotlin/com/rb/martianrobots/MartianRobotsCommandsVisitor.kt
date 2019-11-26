@@ -12,15 +12,13 @@ class MartianRobotsCommandsVisitor : MartianRobotsCommandsBaseVisitor<Unit>() {
     var grid: Grid? = null
     val robots: MutableList<Robot> = mutableListOf()
 
-    override fun visitInput(ctx: MartianRobotsCommandsParser.InputContext?) {
-        // Null safety checks for Java Platform Types
-        ctx?.gridCoords()?.coordinates()?.let { coordinatesContext ->
+    override fun visitGridCoords(ctx: MartianRobotsCommandsParser.GridCoordsContext?) {
+        ctx?.coordinates()?.let { coordinatesContext ->
             val x = coordinatesContext.xCoord()?.text?.toInt()
             val y = coordinatesContext.yCoord()?.text?.toInt()
 
             if (x != null && y != null) {
                 grid = Grid(Coordinate(x, y))
-                visitChildren(ctx)
             }
         }
     }
@@ -39,7 +37,6 @@ class MartianRobotsCommandsVisitor : MartianRobotsCommandsBaseVisitor<Unit>() {
             grid?.let {
                 if (x != null && y != null && orientation != null && instructions != null) {
                     robots.add(Robot(Coordinate(x, y), orientation, instructions, it))
-                    visitChildren(ctx)
                 }
             }
         }
