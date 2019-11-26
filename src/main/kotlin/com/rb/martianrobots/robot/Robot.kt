@@ -15,7 +15,10 @@ class Robot(
     var orientation = initialOrientation
     var isLost = false
 
-    fun getRobotMessage() = "$coords $orientation ${if (isLost) "LOST" else ""}"
+    fun getRobotMessage(): String {
+        val lostMessage = if (isLost) "LOST" else ""
+        return "$coords $orientation $lostMessage"
+    }
 
     fun applyInstructions() {
         for (instruction in instructions) {
