@@ -38,7 +38,7 @@ enum class Orientation(val value: String) {
         }
     };
 
-    override fun toString(): String = value
+    override fun toString() = value
 
     companion object {
         fun from(orientationStr: String): Orientation = values().first { it.value == orientationStr }

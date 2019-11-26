@@ -7,9 +7,9 @@ class Grid(private val topRightCoords: Coordinate) {
     private val bottomLeftCoords: Coordinate =
         Coordinate(0, 0)
 
-    fun hasScentAtCoordinates(coords: Coordinate): Boolean = scentsCoords.find { it == coords } != null
+    fun hasScentAtCoordinates(coords: Coordinate) = scentsCoords.find { it == coords } != null
 
-    fun coordinatesAreInBounds(coords: Coordinate): Boolean =
+    fun coordinatesAreInBounds(coords: Coordinate) =
         bottomLeftCoords.x <= coords.x && coords.x <= topRightCoords.x && bottomLeftCoords.y <= coords.y && coords.y <= topRightCoords.y
 
     fun addScentCoordinates(coords: Coordinate) {
