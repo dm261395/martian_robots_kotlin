@@ -13,28 +13,35 @@ class MartianRobotsCommandsVisitor : MartianRobotsCommandsBaseVisitor<Unit>() {
     val robots: MutableList<Robot> = mutableListOf()
 
     override fun visitInput(ctx: MartianRobotsCommandsParser.InputContext?) {
-        val coordinatesCtx = ctx?.gridCoords()?.coordinates()
+        // Null safety checks for Java Platform Types
+        ctx?.gridCoords()?.coordinates()?.let { coordinatesContext ->
+            val x = coordinatesContext.xCoord()?.text?.toInt()
+            val y = coordinatesContext.yCoord()?.text?.toInt()
 
-        if (coordinatesCtx != null) {
-            val x = coordinatesCtx.xCoord().text.toInt()
-            val y = coordinatesCtx.yCoord().text.toInt()
-            grid = Grid(Coordinate(x, y))
+            if (x != null && y != null) {
+                grid = Grid(Coordinate(x, y))
+                visitChildren(ctx)
+            }
         }
-        visitChildren(ctx)
     }
 
     override fun visitRobotConstructor(ctx: MartianRobotsCommandsParser.RobotConstructorContext?) {
-        val coordinatesCtx = ctx?.coordinates()
+        // Null safety checks for Java Platform Types
+        ctx?.coordinates()?.let { coordinatesContext ->
+            val x = coordinatesContext.xCoord()?.text?.toInt()
+            val y = coordinatesContext.yCoord()?.text?.toInt()
 
-        if (grid != null && coordinatesCtx != null && ctx.orientation() != null) {
-            val x = coordinatesCtx.xCoord().text.toInt()
-            val y = coordinatesCtx.yCoord().text.toInt()
-            val orientation = Orientation.from(ctx.orientation().text)
-            val instructions = ctx.INSTRUCTIONS().text.map { Instruction.from(it.toString()) }
+            val orientationStr = ctx.orientation()?.text
+            val orientation = if (orientationStr != null) Orientation.from(orientationStr) else null
+
+            val instructions = ctx.INSTRUCTIONS()?.text?.map { Instruction.from(it.toString()) }
+
             grid?.let {
-                robots.add(Robot(Coordinate(x, y), orientation, instructions, it))
+                if (x != null && y != null && orientation != null && instructions != null) {
+                    robots.add(Robot(Coordinate(x, y), orientation, instructions, it))
+                    visitChildren(ctx)
+                }
             }
         }
-        visitChildren(ctx)
     }
 }

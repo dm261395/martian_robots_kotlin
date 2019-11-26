@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
     val tree = parser.input()
 
     val visitor = MartianRobotsCommandsVisitor()
-    visitor.visit(tree)
+    tree?.let { visitor.visit(it) }
 
     for (robot in visitor.robots) {
         robot.applyInstructions()
